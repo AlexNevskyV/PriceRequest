@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <default>
+        <reference name="head">
+            <action method="removeItem">
+                <type>js</type>
+                <name>av/jquery/jquery-3.2.1.min.js</name>
+            </action>
+            <action method="removeItem">
+                <type>js</type>
+                <name>av/jquery/jquery.noconflict.js</name>
+            </action>
+            <action method="addJs">
+                <script>av/fancybox/jquery.fancybox.min.js</script>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>av/fancybox/jquery.fancybox.min.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/avrequestprice/requestprice.js</name>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/avrequestprice/requestprice.css</stylesheet>
+            </action>
+        </reference>
+    </default>
+
+
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="av/requestprice/button.phtml"/>
+            <!--<action method="setTierPriceTemplate"><template>av/catalog/product/view/tierprices.phtml</template></action>-->
+        </reference>
+        <reference name="product.info.options.wrapper.bottom">
+            <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="av/requestprice/button.phtml"/>
+            <!--<block type="catalog/product_view" name="product.clone_prices" as="prices" template="av/requestprice/catalog/product/view/price_clone.phtml"/>-->
+        </reference>
+    </catalog_product_view>
+
+
+    <catalog_category_default translate="label">
+        <reference name="product_list">
+            <action method="setTemplate" ifconfig="catalog/request_price/enable">
+                <template>av/requestprice/catalog/product/list.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <reference name="product_list">
+            <action method="setTemplate" ifconfig="catalog/request_price/enable">
+                <template>av/requestprice/catalog/product/list.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_layered>
+
+    <catalogsearch_result_index>
+        <reference name="search_result_list">
+            <action method="setTemplate" ifconfig="catalog/request_price/enable">
+                <template>av/requestprice/catalog/product/list.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_result_index>
+</layout>

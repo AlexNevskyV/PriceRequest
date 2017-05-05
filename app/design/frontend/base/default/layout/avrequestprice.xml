@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <default>
+        <reference name="head">
+            <action method="addJs">
+                <script>av/jquery/jquery-3.2.1.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>av/jquery/jquery.noconflict.js</script>
+            </action>
+            <action method="addJs">
+                <script>av/fancybox/jquery.fancybox.min.js</script>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>av/fancybox/jquery.fancybox.min.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/avrequestprice/requestprice.js</name>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/avrequestprice/requestprice.css</stylesheet>
+            </action>
+        </reference>
+    </default>
+
+
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="av/requestprice/button.phtml"/>
+            <!--<action method="setTierPriceTemplate"><template>av/catalog/product/view/tierprices.phtml</template></action>-->
+        </reference>
+        <reference name="product.info.options.wrapper.bottom">
+            <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="av/requestprice/button.phtml"/>
+            <!--<block type="catalog/product_view" name="product.clone_prices" as="prices" template="av/requestprice/catalog/product/view/price_clone.phtml"/>-->
+        </reference>
+    </catalog_product_view>
+
+
+    <catalog_category_default translate="label">
+        <reference name="product_list">
+            <action method="setTemplate" ifconfig="catalog/request_price/enable">
+                <template>av/requestprice/catalog/product/list.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <reference name="product_list">
+            <action method="setTemplate" ifconfig="catalog/request_price/enable">
+                <template>av/requestprice/catalog/product/list.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_layered>
+
+    <catalogsearch_result_index>
+        <reference name="search_result_list">
+            <action method="setTemplate" ifconfig="catalog/request_price/enable">
+                <template>av/requestprice/catalog/product/list.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <!-- better use observer instead of each product type-->
+    <!--
+    <PRODUCT_TYPE_simple translate="label" module="catalog">
+        <reference name="product.info">
+            <block type="catalog/product_view_type_simple" name="product.info.simple" as="product_type_data" template="av/requestprice/catalog/product/view/type/default.phtml">
+                <block type="core/text_list" name="product.info.simple.extra" as="product_type_data_extra" translate="label">
+                    <label>Product Extra Info</label>
+                </block>
+            </block>
+        </reference>
+    </PRODUCT_TYPE_simple>
+    <PRODUCT_TYPE_configurable translate="label" module="catalog">
+        <reference name="product.info">
+            <block type="catalog/product_view_type_configurable" name="product.info.configurable" as="product_type_data" template="av/requestprice/catalog/product/view/type/default.phtml">
+                <block type="core/text_list" name="product.info.configurable.extra" as="product_type_data_extra" translate="label">
+                    <label>Product Extra Info</label>
+                </block>
+            </block>
+        </reference>
+    </PRODUCT_TYPE_configurable>
+
+    <PRODUCT_TYPE_grouped translate="label" module="catalog">
+        <reference name="product.info">
+            <block type="catalog/product_view_type_grouped" name="product.info.grouped" as="product_type_data" template="av/requestprice/catalog/product/view/type/grouped.phtml">
+                <block type="core/text_list" name="product.info.grouped.extra" as="product_type_data_extra" translate="label">
+                    <label>Product Extra Info</label>
+                </block>
+            </block>
+        </reference>
+    </PRODUCT_TYPE_grouped>
+
+    <PRODUCT_TYPE_virtual translate="label" module="catalog">
+        <reference name="product.info">
+            <block type="catalog/product_view_type_virtual" name="product.info.virtual" as="product_type_data" template="av/requestprice/catalog/product/view/type/default.phtml">
+                <block type="core/text_list" name="product.info.virtual.extra" as="product_type_data_extra" translate="label">
+                    <label>Product Extra Info</label>
+                </block>
+            </block>
+        </reference>
+    </PRODUCT_TYPE_virtual>
+
+    <PRODUCT_TYPE_bundle translate="label" module="bundle">
+        <reference name="product.info">
+            <block type="bundle/catalog_product_view_type_bundle" name="product.info.bundle" as="product_type_data" template="av/requestprice/bundle/catalog/product/view/type/bundle.phtml">
+                <action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>av/requestprice/bundle/catalog/product/price.phtml</template></action>
+                <block type="bundle/catalog_product_price" name="bundle.prices" as="bundle_prices" template="av/requestprice/bundle/catalog/product/view/price.phtml">
+                    <action method="setMAPTemplate"><tmpl>av/requestprice/catalog/product/price_msrp_item.phtml</tmpl></action>
+                </block>
+            </block>
+        </reference>
+
+         <reference name="product.info.options.wrapper.bottom">
+            <remove name="product.tierprices" />
+            <block type="bundle/catalog_product_view" name="bundle.tierprices" as="tierprices" before="-" template="av/requestprice/bundle/catalog/product/view/tierprices.phtml"/>
+        </reference>
+    </PRODUCT_TYPE_bundle>
+    -->
+
+</layout>

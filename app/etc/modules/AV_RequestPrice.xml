@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <AV_RequestPrice>
+            <active>true</active>
+            <codePool>local</codePool>
+        </AV_RequestPrice>
+    </modules>
+</config>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <customer>
+            <children>
+                <requestprice module="avrequestprice" translate="title" >
+                    <title>Price Requests</title>
+                    <sort_order>200</sort_order>
+                    <action>adminhtml/requestprice</action>
+                </requestprice>
+            </children>
+        </customer>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <avrequestprice translate="title" module="avrequestprice">
+                        <title>Price Requests</title>
+                        <sort_order>1000</sort_order>
+                        <children>
+                            <requestprice translate="title">
+                                <title>Price Requests Edit</title>
+                                <sort_order>0</sort_order>
+                            </requestprice>
+                        </children>
+                    </avrequestprice>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

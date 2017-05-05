@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <AV_RequestPrice>
+            <version>0.0.1</version>
+        </AV_RequestPrice>
+    </modules>
+
+    <global>
+        <blocks>
+            <avrequestprice>
+                <class>AV_RequestPrice_Block</class>
+            </avrequestprice>
+        </blocks>
+
+        <helpers>
+            <avrequestprice>
+                <class>AV_RequestPrice_Helper</class>
+            </avrequestprice>
+        </helpers>
+
+        <models>
+            <avrequestprice>
+                <class>AV_RequestPrice_Model</class>
+                <resourceModel>avrequestprice_resource</resourceModel>
+            </avrequestprice>
+            <avrequestprice_resource>
+                <class>AV_RequestPrice_Model_Resource</class>
+                <entities>
+                    <request>
+                        <table>avrequestprice_request</table>
+                    </request>
+                </entities>
+            </avrequestprice_resource>
+        </models>
+
+        <resources>
+            <avrequestprice_setup>
+                <setup>
+                    <module>AV_RequestPrice</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </avrequestprice_setup>
+            <avrequestprice_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </avrequestprice_write>
+            <avrequestprice_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </avrequestprice_read>
+        </resources>
+
+    </global>
+
+    <frontend>
+        <events>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <avrequestprice_to_html_before>
+                        <class>avrequestprice/observer</class>
+                        <method>checkToHidePrice</method>
+                    </avrequestprice_to_html_before>
+                </observers>
+            </core_block_abstract_to_html_before>
+        </events>
+
+        <routers>
+            <AV_RequestPrice>
+                <use>standard</use>
+                <args>
+                    <module>AV_RequestPrice</module>
+                    <frontName>requestprice</frontName>
+                </args>
+            </AV_RequestPrice>
+        </routers>
+        <layout>
+            <updates>
+                <avrequestprice>
+                    <file>avrequestprice.xml</file>
+                </avrequestprice>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <AV_RequestPrice>
+                    <files>
+                        <default>AV_RequestPrice.csv</default>
+                    </files>
+                </AV_RequestPrice>
+            </modules>
+        </translate>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <avrequestprice after="Mage_Adminhtml">AV_RequestPrice_Adminhtml</avrequestprice>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <avrequestprice>
+                    <file>avrequestprice.xml</file>
+                </avrequestprice>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <AV_RequestPrice>
+                    <files>
+                        <default>AV_RequestPrice.csv</default>
+                    </files>
+                </AV_RequestPrice>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <catalog>
+            <request_price>
+                <enable>1</enable>
+                <button_text>Request Price</button_text>
+            </request_price>
+        </catalog>
+    </default>
+</config>
